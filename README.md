@@ -129,7 +129,7 @@ Integrantes:
 
 - Matheus Pedroza;
 
-- Thiago Sousa.
+- Thiago Souza.
   
 
 
