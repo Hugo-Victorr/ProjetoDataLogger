@@ -35,6 +35,7 @@ int humidityAverage = 0;
 int temperatureAverage = 0;
 int lightAverage = 0;
 const int timeOffset = -1; //Registra o fuso-horário BR - EUA
+const int NUM_VALUES = 3; // Número de valores a serem armazenados na EEPROM
 
 unsigned long ultimoTempoPressionado = 0;
 unsigned long intervaloDebounce = 50; // Tempo de debounce em milissegundos
@@ -291,7 +292,7 @@ void controllerEEPROM(int temp, int hum, int lum){
 void saveEEPROM(int temp, int hum, int lum, uint8_t dia, uint8_t mes, uint8_t ano, uint8_t hora, uint8_t minuto, uint8_t segundo) {
   const int SIZE_OF_RECORD = 12; // Tamanho de cada registro na EEPROM (3 ints + 6 uint8_t)
   const int EEPROM_ADDR = 0; // Endereço inicial na EEPROM
-  const int NUM_VALUES = 3; // Número de valores a serem armazenados na EEPROM
+  
 
   // Move os valores antigos para frente
   for (int i = NUM_VALUES - 1; i > 0 ; i--) {
@@ -322,7 +323,6 @@ void saveEEPROM(int temp, int hum, int lum, uint8_t dia, uint8_t mes, uint8_t an
 void readAndPrintEEPROM() {
   const int SIZE_OF_RECORD = 12; // Tamanho de cada registro na EEPROM (3 ints + 6 uint8_t)
   const int EEPROM_ADDR = 0; // Endereço inicial na EEPROM
-  const int NUM_VALUES = 3; // Número máximo de valores a serem armazenados na EEPROM
 
   // Itera sobre os registros salvos na EEPROM
   for (int i = 0; i < NUM_VALUES; i++) {
